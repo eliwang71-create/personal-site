@@ -19,6 +19,7 @@
   --tiltX: 0deg;
   --tiltY: 0deg;
   --nav-indicator-left: 32px;
+  --scroll-progress: 0;
 }
 
 * {
@@ -235,7 +236,7 @@ section {
   background: rgba(10, 15, 12, 0.36);
   backdrop-filter: blur(18px) saturate(1.1);
   border-bottom: 1px dashed rgba(255,255,255,0.14);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .topbar::after {
@@ -248,6 +249,39 @@ section {
   background: var(--green);
   box-shadow: 0 0 10px rgba(0,255,163,0.45);
   transition: left 0.28s ease;
+}
+
+.topbar-progress {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 8px;
+  pointer-events: none;
+}
+
+.topbar-progress-track {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 1px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(0,255,163,0.08), rgba(255,255,255,0.04));
+  opacity: 0.7;
+}
+
+.topbar-progress-pixel {
+  position: absolute;
+  left: calc(16px + (100% - 44px) * var(--scroll-progress));
+  bottom: -1px;
+  width: 12px;
+  height: 6px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--green-3), var(--green));
+  box-shadow: 0 0 10px rgba(0,255,163,0.45);
+  transition: left 0.16s linear;
 }
 
 .topbar-inner {
@@ -899,10 +933,41 @@ button:focus-visible {
 }
 
 @media (max-width: 840px) {
+  .topbar-progress {
+    display: block;
+  }
+
+  .topbar::after {
+    display: none;
+  }
+  .topbar {
+    overflow: visible;
+  }
+
+  .topbar-inner {
+    min-height: 60px;
+    gap: 12px;
+  }
+
+  .brand {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .brand-text span {
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .menu-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 92;
+    flex: 0 0 auto;
   }
 
   .nav {
@@ -913,11 +978,21 @@ button:focus-visible {
     display: none;
     flex-direction: column;
     align-items: stretch;
+    gap: 8px;
     padding: 14px;
     border-radius: 18px;
-    background: rgba(9, 14, 11, 0.94);
+    background: rgba(9, 14, 11, 0.97);
     border: 1px solid rgba(0,255,163,0.08);
     box-shadow: var(--shadow);
+    z-index: 91;
+  }
+
+  .nav a {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
   }
 
   .nav.open {

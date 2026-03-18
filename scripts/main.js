@@ -40,6 +40,13 @@ function updateNavIndicator(target) {
   topbar.style.setProperty('--nav-indicator-left', `${left}px`);
 }
 
+function updateScrollProgress() {
+  if (!topbar) return;
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollableHeight > 0 ? Math.min(Math.max(window.scrollY / scrollableHeight, 0), 1) : 0;
+  topbar.style.setProperty('--scroll-progress', String(progress));
+}
+
 function setMenuState(isOpen) {
   navMenu.classList.toggle('open', isOpen);
   menuToggle?.setAttribute('aria-expanded', String(isOpen));
@@ -73,6 +80,7 @@ navLinks.forEach((link) => {
 window.addEventListener('load', () => {
   syncActiveNav();
   updateNavIndicator(document.querySelector('.nav a.active') || navLinks[0]);
+  updateScrollProgress();
 });
 
 window.addEventListener('resize', () => {
@@ -80,6 +88,7 @@ window.addEventListener('resize', () => {
     setMenuState(false);
   }
   updateNavIndicator(document.querySelector('.nav a.active') || navLinks[0]);
+  updateScrollProgress();
 });
 
 let ticking = false;
@@ -88,6 +97,7 @@ window.addEventListener('scroll', () => {
   ticking = true;
   window.requestAnimationFrame(() => {
     syncActiveNav();
+    updateScrollProgress();
     ticking = false;
   });
 }, { passive: true });
