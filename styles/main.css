@@ -993,7 +993,35 @@ button:focus-visible {
     transition:
       opacity 0.24s ease,
       transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-      visibility 0s linear 0.34s;
+      visibility 0s linear 0.34s,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .nav::before,
+  .nav::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.28s ease 0.08s;
+  }
+
+  .nav::before {
+    padding: 1px;
+    background: linear-gradient(120deg, transparent 0%, transparent 42%, rgba(0,243,255,0.92) 50%, rgba(0,243,255,0.22) 56%, transparent 66%, transparent 100%);
+    background-size: 220% 220%;
+    background-position: 180% 50%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    filter: drop-shadow(0 0 8px rgba(0,243,255,0.18));
+  }
+
+  .nav::after {
+    background: radial-gradient(circle at 50% 0%, rgba(0,255,163,0.12), transparent 48%);
   }
 
   .nav a {
@@ -1013,10 +1041,23 @@ button:focus-visible {
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0) scale(1);
+    box-shadow: 0 26px 60px rgba(0,0,0,0.42), 0 0 18px rgba(0,255,163,0.12);
+    border-color: rgba(0,255,163,0.16);
     transition:
       opacity 0.24s ease,
       transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-      visibility 0s linear 0s;
+      visibility 0s linear 0s,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .nav.open::before,
+  .nav.open::after {
+    opacity: 1;
+  }
+
+  .nav.open::before {
+    animation: arcFlow 1.25s linear infinite;
   }
 
   .nav a:hover,
