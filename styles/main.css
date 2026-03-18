@@ -268,13 +268,13 @@ section {
 }
 
 .brand-avatar-wrap {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(0,255,163,0.14);
-  background: rgba(255,255,255,0.03);
-  flex: 0 0 40px;
+  background: transparent;
+  flex: 0 0 44px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
 }
 
 .brand-avatar {
