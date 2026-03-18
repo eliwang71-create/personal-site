@@ -266,8 +266,8 @@ section {
   left: 16px;
   right: 16px;
   bottom: 1px;
-  height: 2px;
-  border-radius: 999px;
+  height: 1px;
+  border-radius: 0;
   background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(0,255,163,0.08), rgba(255,255,255,0.04));
   opacity: 0.7;
 }
@@ -276,11 +276,11 @@ section {
   position: absolute;
   left: calc(16px + (100% - 44px) * var(--scroll-progress));
   bottom: -1px;
-  width: 12px;
-  height: 6px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--green-3), var(--green));
-  box-shadow: 0 0 10px rgba(0,255,163,0.45);
+  width: 4px;
+  height: 4px;
+  border-radius: 0;
+  background: linear-gradient(90deg, #cffff0, var(--green));
+  box-shadow: 0 0 6px rgba(0,255,163,0.32);
   transition: left 0.16s linear;
 }
 
@@ -975,16 +975,25 @@ button:focus-visible {
     top: calc(100% + 10px);
     left: 14px;
     right: 14px;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
     padding: 14px;
     border-radius: 18px;
-    background: rgba(9, 14, 11, 0.97);
-    border: 1px solid rgba(0,255,163,0.08);
+    background: rgba(6, 10, 8, 0.985);
+    border: 1px solid rgba(0,255,163,0.12);
     box-shadow: var(--shadow);
     z-index: 91;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top right;
+    transition:
+      opacity 0.24s ease,
+      transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 0.34s;
   }
 
   .nav a {
@@ -993,10 +1002,28 @@ button:focus-visible {
     display: flex;
     align-items: center;
     padding: 10px 12px;
+    color: #f4fff9;
+    background: rgba(255,255,255,0.025);
+    border-color: rgba(255,255,255,0.04);
+    text-shadow: 0 0 10px rgba(255,255,255,0.04);
   }
 
   .nav.open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    transition:
+      opacity 0.24s ease,
+      transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 0s;
+  }
+
+  .nav a:hover,
+  .nav a.active {
+    color: #ffffff;
+    background: rgba(0,255,163,0.09);
+    border-color: rgba(0,255,163,0.14);
   }
 
   .hero-title {
