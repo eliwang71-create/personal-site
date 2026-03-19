@@ -3,452 +3,373 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="王一轩的个人求职作品集，聚焦技术实现、测试能力、产品理解、项目实践与跨团队协作能力展示。" />
+  <meta name="description" content="王一轩的个人求职作品集，聚焦技术产品、工程实现、测试能力与项目实践。" />
   <title>Yixuan</title>
   <link rel="icon" href="coding.png" type="image/png" />
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-  <div class="cursor-trail" id="cursorTrail"></div>
   <div class="cursor" id="cursor"></div>
-  <div class="cursor-label" id="cursorLabel">view</div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+  <div class="cursor-label mono" id="cursorLabel"></div>
   <div class="cursor-ripple" id="cursorRipple"></div>
+  <div class="grid-bg" aria-hidden="true"></div>
 
-  <div class="parallax-back" id="parallaxBack"></div>
-  <div class="parallax-mid" id="parallaxMid"></div>
-  <div class="parallax-front" id="parallaxFront"></div>
+  <svg class="icon-defs" aria-hidden="true" focusable="false">
+    <symbol id="icon-stack" viewBox="0 0 24 24">
+      <path d="M12 3 4 7l8 4 8-4-8-4Zm-8 9 8 4 8-4M4 17l8 4 8-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-server" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <rect x="4" y="14" width="16" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M8 7h.01M8 17h.01M12 7h4M12 17h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-flow" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="7" height="5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <rect x="14" y="4" width="7" height="5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <rect x="8.5" y="15" width="7" height="5" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M6.5 9v2.5h11V9M12 11.5V15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="m5 12 4 4L19 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4 4h16v16H4z" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.5"/>
+    </symbol>
+    <symbol id="icon-snake" viewBox="0 0 24 24">
+      <path d="M5 6h4v4H5zm5 0h4v4h-4zm0 5h4v4h-4zm5 5h4v4h-4zM5 16h4v4H5z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-memory" viewBox="0 0 24 24">
+      <rect x="5" y="7" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M9 10h1v4H9zm5 0h1v4h-1zM3 10h2m0 4h2m12-4h2m-2 4h2M8 4v3m4-3v3m4-3v3m-8 10v3m4-3v3m4-3v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-briefcase" viewBox="0 0 24 24">
+      <path d="M9 6V4h6v2M4 8h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Zm0 4h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="m5 7 7 6 7-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
 
-  <header class="topbar">
-    <div class="topbar-progress" aria-hidden="true">
-      <span class="topbar-progress-track"></span>
-      <span class="topbar-progress-pixel"></span>
-    </div>
-    <div class="container topbar-inner">
-      <a href="#home" class="brand interactive" data-cursor="home">
-        <div class="brand-avatar-wrap">
-          <img class="brand-avatar" src="assets/avatar-photo.jpg" data-fallback-src="assets/avatar-placeholder.svg" alt="王一轩头像" decoding="async" />
-        </div>
-        <div class="brand-text">
-          <strong>Yixuan</strong>
-          <span>TECHNICAL PRODUCT PORTFOLIO</span>
-        </div>
-      </a>
-
-      <button class="menu-toggle interactive" id="menuToggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="navMenu">☰</button>
-
-      <nav class="nav" id="navMenu">
-        <a class="active interactive" href="#home" data-cursor="home">首页</a>
-        <a class="interactive" href="#highlights" data-cursor="highlights">能力概览</a>
-        <a class="interactive" href="#skills" data-cursor="skills">专业技能</a>
-        <a class="interactive" href="#product" data-cursor="product">产品能力</a>
-        <a class="interactive" href="#experience" data-cursor="experience">实习经历</a>
-        <a class="interactive" href="#quality" data-cursor="quality">测试能力</a>
-        <a class="interactive" href="#projects" data-cursor="projects">项目</a>
-        <a class="interactive" href="#contact" data-cursor="contact">联系</a>
+  <header class="site-header mix-nav">
+    <div class="shell header-shell">
+      <a href="#home" class="brand interactive" data-cursor="home">YIXUAN<span class="brand-dot" aria-hidden="true"></span></a>
+      <button class="menu-toggle interactive" id="menuToggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" id="siteNav">
+        <a class="nav-link interactive active" href="#about" data-cursor="about">ABOUT</a>
+        <a class="nav-link interactive" href="#projects" data-cursor="projects">PROJECTS</a>
+        <a class="nav-link interactive" href="#skills" data-cursor="skills">TECH</a>
+        <a class="nav-link interactive" href="#contact" data-cursor="contact">CONTACT</a>
       </nav>
+      <a class="header-talk interactive mono" href="mailto:wangyx030212@163.com" data-cursor="mail">LETS TALK</a>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow"><span class="eyebrow-dot"></span> Product-minded Engineer / Internship Practice / Testing Awareness</div>
-          <h1 class="hero-title">
-            <span class="line">HELLO</span>
-            <span class="line">I'M</span>
-            <span class="line accent pixel-inline pixel-font">YIXUAN</span>
+      <div class="shell hero-shell">
+        <div class="hero-copy">
+          <div class="hero-kicker mono"><span></span>TECH PRODUCT / ENGINEERING / QUALITY</div>
+          <h1 class="hero-title" id="heroTitle">
+            <span class="hero-line hero-line-primary">PRODUCT × ENGINEERING</span>
+            <span class="hero-line hero-line-secondary">理解需求，也能实现</span>
           </h1>
-          <p class="hero-desc">
-            我希望把自己的定位从“只会实现功能”进一步扩展为“能理解需求、推动落地、关注质量，也能完成技术实现”的复合型候选人。这个网站集中展示我的产品认知、实习实践、测试能力、工程基础与项目经验，目前求职方向以技术产品为优先，同时保留技术实现相关岗位的适配能力。
-          </p>
-          <div class="hero-tags">
-            <span class="chip interactive pixel-font">PRODUCT</span>
-            <span class="chip interactive pixel-font">ENGINEER</span>
-            <span class="chip interactive pixel-font">QUALITY</span>
-            <span class="chip interactive pixel-font">INTERN</span>
-          </div>
-          <div class="action-row">
-            <a class="btn btn-primary interactive" data-cursor="projects" href="#projects">查看项目</a>
-            <a class="btn interactive" data-cursor="experience" href="#experience">查看实习经历</a>
+          <div class="hero-bottom-row">
+            <div class="hero-copy-stack">
+              <p class="hero-desc">我希望把自己的定位从“只会实现功能”进一步扩展为“能理解需求、推动落地、关注质量，也能完成技术实现”的复合型候选人。这里集中展示我的产品认知、实习实践、测试能力、工程基础与项目经验。目前求职方向以技术产品为优先，也保留技术实现相关岗位的适配能力。</p>
+              <div class="hero-positioning">
+                <span class="mono">2026届技术产品候选人</span>
+                <span class="mono">理解需求 · 推动落地 · 完成实现</span>
+              </div>
+            </div>
+            <a href="#about" class="hero-arrow interactive" data-cursor="down" aria-label="查看下一部分">
+              <span></span>
+            </a>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="hero-panel reveal">
-          <div class="profile-stage interactive" data-cursor="profile">
-            <div class="floating-card float-top">
-              <small>目标方向</small>
-              <strong>技术产品优先<br>兼顾技术实现相关岗位</strong>
-            </div>
-
-            <img class="profile-photo" src="assets/avatar-photo.jpg" data-fallback-src="assets/avatar-placeholder.svg" alt="王一轩证件照头像" decoding="async" />
-
-            <div class="floating-card float-bottom">
-              <small>求职定位</small>
-              <strong>产品理解 + 技术实现<br>强调落地与协作能力</strong>
-            </div>
+    <section class="about-section" id="about">
+      <div class="shell about-grid reveal">
+        <div class="about-visual group">
+          <div class="about-image-panel">
+            <img src="assets/avatar-photo.jpg" alt="王一轩头像" class="about-photo" />
           </div>
-
-          <div class="panel-grid">
-            <div class="mini-card">
-              <span>核心方向</span>
-              <strong>技术实现 + 产品理解</strong>
-            </div>
-            <div class="mini-card">
-              <span>实践经历</span>
-              <strong>实习实践 + 测试能力</strong>
-            </div>
-            <div class="mini-card">
-              <span>目标岗位</span>
+          <div class="about-frame"></div>
+        </div>
+        <div class="about-copy">
+          <p class="section-kicker mono">01 / BIOGRAPHY</p>
+          <h2 class="section-title section-title-tight">用技术构建桥梁，用产品思维推动落地。</h2>
+          <div class="about-text">
+            <p>我希望自己不只是完成功能的人，而是能理解需求目标、判断实现路径、推动方案交付的人。对我来说，好的产品表达和稳定的技术实现，本来就应该放在一起思考。</p>
+            <p>在个人项目和实习阶段，我逐渐把关注点从单一实现扩展到了流程设计、测试验证、协作推进和用户体验。这也是我现在更明确把技术产品作为求职主方向的原因。</p>
+          </div>
+          <div class="about-stats">
+            <article>
               <strong>技术产品</strong>
-            </div>
+              <span class="mono">PRIMARY DIRECTION</span>
+            </article>
+            <article>
+              <strong>测试闭环</strong>
+              <span class="mono">QUALITY AWARENESS</span>
+            </article>
+            <article>
+              <strong>西安财经大学</strong>
+              <span class="mono">2026.07 GRADUATE</span>
+            </article>
+            <article>
+              <strong>吉利汽车研究院</strong>
+              <span class="mono">2025.08 - 2025.11</span>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="highlights">
-      <div class="container">
-        <div class="section-header reveal">
-          <div>
-            <h2 class="section-title">能力概览</h2>
-           
+    <section class="marquee-band" aria-label="技术走马灯">
+      <div class="marquee-track marquee-track-a mono">
+        <span>TECH PRODUCT</span><span>/</span><span>REQUIREMENT ANALYSIS</span><span>/</span><span>USER FLOW</span><span>/</span><span>C PLUS PLUS</span><span>/</span><span>QT DEVELOPMENT</span><span>/</span><span>TEST CLOSED LOOP</span><span>/</span><span>TEAM DELIVERY</span><span>/</span><span>TECH PRODUCT</span><span>/</span><span>REQUIREMENT ANALYSIS</span><span>/</span><span>USER FLOW</span><span>/</span><span>C PLUS PLUS</span><span>/</span><span>QT DEVELOPMENT</span><span>/</span><span>TEST CLOSED LOOP</span><span>/</span><span>TEAM DELIVERY</span>
+      </div>
+    </section>
+
+    <section class="content-section skills-section" id="skills">
+      <div class="shell skills-shell reveal">
+        <div class="skills-panel">
+          <div class="skills-panel-head">
+            <h2 class="skills-title">SKILLS.</h2>
+            <div class="skills-status mono"><span></span>CORE STACK ONLINE</div>
           </div>
-          <div class="tag-row">
-            <span class="tag interactive">项目导向</span>
-            <span class="tag interactive">工程闭环</span>
-            <span class="tag interactive">产品意识</span>
+
+          <div class="skills-columns">
+            <article class="skills-column interactive" data-cursor="tech">
+              <h3 class="skills-column-title mono">PROGRAMMING</h3>
+              <div class="skills-column-body">
+                <div class="skills-mini-card">
+                  <p>熟练掌握 <strong>C++ / Qt</strong>，具备高性能桌面应用开发经验，也能把复杂逻辑拆回到数据结构和底层实现。</p>
+                </div>
+                <div class="skills-mini-card">
+                  <p>熟悉 <strong>MySQL</strong> 与 SQL 基础操作，能够完成界面、数据和交互验证之间的完整联动。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skills-column interactive" data-cursor="system">
+              <h3 class="skills-column-title mono">SYSTEMS</h3>
+              <div class="skills-column-body">
+                <div class="skills-mini-card">
+                  <p>熟悉 <strong>Linux</strong> 环境开发，能够使用 Git、CMake 与 Shell 脚本完成基础工程协作和开发流程搭建。</p>
+                </div>
+                <div class="skills-mini-card">
+                  <p>掌握 <strong>TCP/IP</strong> 协议栈、Socket 通信、线程与文件 I/O 等核心概念，具备系统层面的理解能力。</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skills-column interactive" data-cursor="quality">
+              <h3 class="skills-column-title mono">SPECIALIZED</h3>
+              <div class="skills-column-body">
+                <div class="skills-mini-card">
+                  <p>具备 <strong>测试闭环</strong> 意识，能够从需求拆解、接口验证到回归测试去判断功能是否真正可交付。</p>
+                </div>
+                <div class="skills-mini-card">
+                  <p>在个人项目和实习中持续强化 <strong>产品协作</strong> 视角，关注流程、质量与落地体验之间的关系。</p>
+                </div>
+              </div>
+            </article>
           </div>
-        </div>
-
-        <div class="bento-grid">
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="view">
-            <div class="feature-index pixel-font">01</div>
-            <h3>项目优先展示</h3>
-            <p>页面把代表性项目、实习经历和能力结构放在最核心位置，优先呈现业务背景、问题拆解、推进过程与结果产出，贴合求职浏览路径。</p>
-          </article>
-
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="view">
-            <div class="feature-index pixel-font">02</div>
-            <h3>质量意识清晰</h3>
-            <p>内容重点覆盖功能实现、测试方法、接口验证和质量保障思路，让能力展示不只停留在概念层面，而是更接近真实交付场景。</p>
-          </article>
-
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="view">
-            <div class="feature-index pixel-font">03</div>
-            <h3>产品表达更完整</h3>
-            <p>每个模块都尽量回答“做了什么、为什么做、面向谁、如何推进、结果如何”，让沟通既有技术深度，也有产品语境。</p>
-          </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="skills">
-      <div class="container">
-        <div class="section-header reveal">
-          <div>
-            <h2 class="section-title">专业技能</h2>
-          </div>
-          <div class="tag-row">
-            <span class="tag interactive">C / C++</span>
-            <span class="tag interactive">Linux</span>
-            <span class="tag interactive">Qt / MySQL</span>
-          </div>
-        </div>
-
-        <div class="bento-grid">
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="skills">
-            <h3>编程语言 / 数据结构</h3>
-            <div class="project-points">
-              <div>熟练使用 C / C++，理解封装、继承、多态等面向对象编程思想。</div>
-              <div>熟悉动态内存管理机制与 STL 常用容器，如 stack、queue、map。</div>
-              <div>熟悉链表、栈、队列、二叉树、快速排序、归并排序等数据结构与算法基础。</div>
-              <div>掌握分治、动态规划、贪心等常见算法思路。</div>
-            </div>
-          </article>
-
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="skills">
-            <h3>操作系统 / 网络</h3>
-            <div class="project-points">
-              <div>熟悉 Linux 常用命令和基本工具，如 rm、mv、git、makefile。</div>
-              <div>掌握 Linux 系统编程基础，了解线程管理、文件 I/O、信号处理与 Socket 通信。</div>
-              <div>具备 Shell 脚本编写和基础性能调优经验。</div>
-              <div>熟悉 TCP/IP 协议栈，理解 HTTP / HTTPS 协议并掌握 UDP 协议特性。</div>
-            </div>
-          </article>
-
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="skills">
-            <h3>Qt / 数据库</h3>
-            <div class="project-points">
-              <div>熟练掌握 Qt 框架应用开发，可使用 Qt Widgets 与 Qt Quick 构建桌面程序。</div>
-              <div>理解 Qt 核心机制，具备多线程编程和内存管理优化经验。</div>
-              <div>熟悉 Qt Designer 设计 GUI，并通过样式表和自定义控件优化界面。</div>
-              <div>熟悉 MySQL，掌握 SQL 增删改查等基础操作。</div>
-            </div>
-          </article>
-        </div>
+    <section class="content-section narrative-section">
+      <div class="shell narrative-grid reveal">
+        <article class="narrative-card interactive" data-cursor="product">
+          <p class="section-kicker mono">PRODUCT / 产品理解</p>
+          <h2>理解目标</h2>
+          <p>我希望把技术和产品放在同一条链路里思考，不只是实现功能，也会先判断目标、用户和落地价值。</p>
+          <ul class="detail-list detail-list-compact">
+            <li><strong>目标理解：</strong>先判断这件事为什么做、解决谁的问题、预期效果是什么。</li>
+            <li><strong>用户视角：</strong>关注使用路径是否清晰，功能是否真的解决真实问题。</li>
+            <li><strong>方案判断：</strong>把目标、流程和实现方式放在一起考虑。</li>
+          </ul>
+        </article>
+        <article class="narrative-card interactive" data-cursor="method">
+          <p class="section-kicker mono">METHOD / 工作方式</p>
+          <h3>流程推进</h3>
+          <p>我习惯先把目标和使用场景理清楚，再画流程图，然后进入代码开发。遇到问题时也会及时沟通，避免把小问题拖成更大的风险。</p>
+          <ul class="detail-list detail-list-compact">
+            <li><strong>先理解需求：</strong>明确目标、边界和使用场景。</li>
+            <li><strong>再拆流程：</strong>把关键步骤和异常情况梳理清楚。</li>
+            <li><strong>及时沟通：</strong>发现风险后尽快同步，不让问题堆积。</li>
+          </ul>
+        </article>
+        <article class="narrative-card interactive" data-cursor="test">
+          <p class="section-kicker mono">QUALITY / 测试意识</p>
+          <h3>验证质量</h3>
+          <p>个人项目里遇到的问题越多，我越明确严格的逻辑和测试闭环是必不可少的。功能实现之后，我会更关注是否稳定、是否可验证、是否真的能交付。</p>
+          <ul class="detail-list detail-list-compact">
+            <li><strong>逻辑校验：</strong>先确认边界条件和状态流转是否自洽。</li>
+            <li><strong>测试验证：</strong>关注接口、数据、回归和异常场景是否可验证。</li>
+            <li><strong>交付意识：</strong>不仅完成功能，也关注稳定性和可复现性。</li>
+          </ul>
+        </article>
+        <article class="narrative-card interactive" data-cursor="delivery">
+          <p class="section-kicker mono">DELIVERY / 交付视角</p>
+          <h3>推动落地</h3>
+          <p>我会从开发、测试、评审和演示这些真实环节去看方案，而不是只停留在“功能已经写完”的阶段。</p>
+          <ul class="detail-list detail-list-compact">
+            <li><strong>联调协作：</strong>考虑和产品、设计、测试之间的信息传递是否顺畅。</li>
+            <li><strong>风险意识：</strong>提前关注周期、成本和实现难点，减少返工。</li>
+            <li><strong>稳定交付：</strong>让方案最终能够被开发、测试、演示和稳定交付。</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="product">
-      <div class="container">
-        <div class="section-header reveal">
-          <div>
-            <h2 class="section-title">产品能力</h2>
-          </div>
-          <div class="tag-row">
-            <span class="tag interactive">需求拆解</span>
-            <span class="tag interactive">用户视角</span>
-            <span class="tag interactive">协同落地</span>
-          </div>
-        </div>
-
-        <div class="bento-grid">
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="product">
-            <div class="feature-index pixel-font">P1</div>
-            <h3>需求理解与拆解</h3>
-            <p>熟悉需求分析、用户调研和竞品分析，能够独立撰写 PRD 文档并进行功能拆解，把抽象目标转化为可执行的模块和流程。</p>
-          </article>
-
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="product">
-            <div class="feature-index pixel-font">P2</div>
-            <h3>原型表达与流程设计</h3>
-            <p>了解用户原型设计工具，能够完成交互流程设计与基础功能原型搭建，帮助团队更早对齐方案，减少后续返工成本。</p>
-          </article>
-
-          <article class="card tilt-card reveal span-4 interactive" data-cursor="product">
-            <div class="feature-index pixel-font">P3</div>
-            <h3>版本推进与跨团队协作</h3>
-            <p>熟悉敏捷开发流程，具备版本迭代管理、跨部门沟通和项目推进能力，能够从实现成本、开发周期和风险角度支持方案落地。</p>
-          </article>
-        </div>
+    <section class="marquee-band marquee-band-dim" aria-label="技术走马灯">
+      <div class="marquee-track marquee-track-b mono">
+        <span>PRODUCT STRATEGY</span><span>/</span><span>QUALITY ASSURANCE</span><span>/</span><span>INTERACTION FLOW</span><span>/</span><span>LINUX SYSTEM</span><span>/</span><span>MYSQL VALIDATION</span><span>/</span><span>INTERNSHIP PRACTICE</span><span>/</span><span>CROSS TEAM COMMUNICATION</span><span>/</span><span>PRODUCT STRATEGY</span><span>/</span><span>QUALITY ASSURANCE</span><span>/</span><span>INTERACTION FLOW</span><span>/</span><span>LINUX SYSTEM</span><span>/</span><span>MYSQL VALIDATION</span><span>/</span><span>INTERNSHIP PRACTICE</span><span>/</span><span>CROSS TEAM COMMUNICATION</span>
       </div>
     </section>
 
-    <section class="section" id="experience">
-      <div class="container">
-        <div class="section-header reveal">
-          <div>
-            <h2 class="section-title">实习经历</h2>
-            
-          </div>
-          <div class="tag-row">
-            <span class="tag interactive">功能开发</span>
-            <span class="tag interactive">自动化测试</span>
-            <span class="tag interactive">产品协作</span>
+    <section class="work-section" id="projects">
+      <div class="shell reveal">
+        <div class="work-head">
+          <h2 class="work-title">Works.</h2>
+          <div class="work-meta mono">
+            <p>HAND PICKED SELECTION</p>
+            <p>OF PROJECT PRACTICE</p>
           </div>
         </div>
 
-        <div class="bento-grid">
-          <article class="card tilt-card reveal span-7 interactive" data-cursor="experience">
-            <div class="project-meta">
-              <span>2025.08 - 2025.11</span>
-              <span class="project-tag pixel-font">INTERN</span>
+        <div class="project-card-list">
+          <article class="project-showcase interactive reveal" data-cursor="project">
+            <div class="project-showcase-content">
+              <p class="project-label mono">01 / QT ENGINE</p>
+              <h3 class="project-showcase-title">REAL TIME<br />SNAKE ENGINE</h3>
+              <p class="project-showcase-desc">一个基于 Qt 的高性能桌面游戏引擎，围绕经典玩法实现动态难度调节、状态持久化与稳定渲染流程，重点体现桌面程序架构设计与交互实现能力。</p>
+              <div class="project-proof-grid">
+                <div><span class="mono">ROLE</span><strong>独立完成桌面交互与状态逻辑实现</strong></div>
+                <div><span class="mono">STACK</span><strong>Qt Widgets / C++11 / 事件驱动</strong></div>
+                <div><span class="mono">RESULT</span><strong>实现 60FPS 流畅动画，支持难度切换与存档读档</strong></div>
+              </div>
+              <a href="https://github.com/eliwang71-create/personal-projects" target="_blank" rel="noreferrer" class="project-showcase-link mono" data-cursor="github">VIEW PROJECT</a>
             </div>
-            <h3>电子软件实习生 / 吉利汽车研究院（宁波）有限公司</h3>
-            <p>参与车内氛围灯动态流效方案的功能开发与产品落地，把提升用户体验和品牌认知度的需求转化为可实现、可测试、可交付的方案，在真实业务环境中积累了产品与技术协同推进经验。</p>
-            <div class="project-points">
-              <div>参与车内氛围灯动态流效方案的功能开发，运用 C++ 实现核心逻辑，并支持车型发布会中的产品演示需求。</div>
-              <div>独立编写 Python 自动化测试脚本，参与 C++ 单元测试与每日回归测试体系建设，提升测试效率与交付质量。</div>
-              <div>与产品、设计、硬件团队协作，跟踪参与产品方案的技术评审，从开发周期、风险与成本角度推动方案落地。</div>
-            </div>
-          </article>
-
-          <article class="card tilt-card reveal span-5 interactive" data-cursor="experience">
-            <div class="project-meta">
-              <span>Internship Value</span>
-              <span class="project-tag pixel-font">GROW</span>
-            </div>
-            <h3>这段实习带给我的能力补充</h3>
-            <div class="project-points">
-              <div>让我第一次在真实业务环境中同时接触需求目标、开发实现、测试验证和版本交付。</div>
-              <div>强化了我把技术问题转换为业务语言、把业务目标拆回实现路径的能力。</div>
-              <div>也让我更重视质量保障和跨角色沟通，而不只是单点完成编码任务。</div>
-            </div>
-            <div class="action-row" style="margin-top:16px;">
-              <a class="btn interactive" href="./王一轩-产品.pdf" target="_blank" rel="noreferrer" data-cursor="resume">查看产品简历</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="quality">
-      <div class="container">
-        <div class="section-header reveal">
-          <div>
-            <h2 class="section-title">测试能力</h2>
-            
-          </div>
-          <div class="tag-row">
-            <span class="tag interactive">测试流程</span>
-            <span class="tag interactive">接口测试</span>
-            <span class="tag interactive">用例设计</span>
-          </div>
-        </div>
-
-        <div class="bento-grid">
-          <article class="card tilt-card reveal span-7 interactive" data-cursor="quality">
-            <div class="project-meta">
-              <span>Testing Perspective</span>
-              <span class="project-tag pixel-font">QA</span>
-            </div>
-            <h3>测试流程与质量保障</h3>
-            <p>我对软件测试流程、生命周期和常见设计方法有系统理解，能够从需求分析出发编写测试用例，并通过接口测试与基础数据库验证支撑功能质量判断。</p>
-            <div class="project-points">
-              <div>熟悉软件测试流程与生命周期，能够进行测试需求分析、设计测试思路并编写测试用例。</div>
-              <div>理解瀑布模型、敏捷模型、增量模型与迭代模型，能够把测试工作放回到完整开发流程中理解。</div>
-              <div>了解黑盒、白盒、灰盒与回归测试方法，并熟悉常用 V 模型的测试视角。</div>
+            <div class="project-showcase-media project-showcase-media-light">
+              <img src="assets/snake-engine-preview.svg" alt="Snake Engine 项目预览图" class="project-media-image" />
             </div>
           </article>
 
-          <article class="card tilt-card reveal span-5 interactive" data-cursor="quality">
-            <div class="project-meta">
-              <span>Quality Toolkit</span>
-              <span class="project-tag pixel-font">CHECK</span>
+          <article class="project-showcase interactive reveal" data-cursor="project">
+            <div class="project-showcase-content">
+              <p class="project-label mono">02 / SYSTEM MEMORY</p>
+              <h3 class="project-showcase-title">MEMORY<br />POOL</h3>
+              <p class="project-showcase-desc">面向多线程高并发场景设计并实现的内存池系统，采用三级缓存架构优化内存分配效率，重点解决传统 malloc/free 在高并发下的锁竞争与碎片问题。</p>
+              <div class="project-proof-grid">
+                <div><span class="mono">ROLE</span><strong>完成缓存层级设计与核心分配流程实现</strong></div>
+                <div><span class="mono">STACK</span><strong>C++ / 多线程同步 / 哈希桶 / 页缓存</strong></div>
+                <div><span class="mono">RESULT</span><strong>小块内存场景分配效率提升约 35%，显著降低碎片率</strong></div>
+              </div>
+              <a href="https://github.com/eliwang71-create/personal-projects" target="_blank" rel="noreferrer" class="project-showcase-link mono" data-cursor="github">VIEW PROJECT</a>
             </div>
-            <h3>接口测试与用例设计</h3>
-            <div class="project-points">
-              <div>熟悉使用 Postman 进行接口测试，通过 HTTP 请求验证实际结果与预期的一致性。</div>
-              <div>掌握等价划分、边界值分析、正交法等基础测试用例设计方法。</div>
-              <div>熟悉 MySQL 基础操作，可通过 SQL 对测试数据进行增删查改和结果校验。</div>
-            </div>
-            <div class="action-row" style="margin-top:16px;">
-              <a class="btn interactive" href="./王一轩-测试.pdf" target="_blank" rel="noreferrer" data-cursor="resume">查看测试简历</a>
+            <div class="project-showcase-media project-showcase-media-dark">
+              <img src="assets/memory-pool-diagram.svg" alt="Memory Pool 架构示意图" class="project-media-image" />
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-header reveal">
-          <div>
-            <h2 class="section-title">核心项目</h2>
-            
-          </div>
-          <div class="tag-row">
-            <span class="tag interactive">Qt 开发</span>
-            <span class="tag interactive">高并发</span>
-            <span class="tag interactive">性能优化</span>
+    <section class="content-section experience-section">
+      <div class="shell reveal">
+        <div class="section-head experience-head">
+          <p class="section-kicker mono">INTERNSHIP / 实习经历</p>
+          <div class="experience-head-copy">
+            <h2 class="section-title experience-headline">让需求落地</h2>
+            <p class="experience-subcopy">在真实业务里，把需求、开发、测试和协作连起来。</p>
           </div>
         </div>
 
-        <div class="bento-grid">
-          <article class="card tilt-card reveal span-7 interactive" data-cursor="project">
-            <div class="project-meta">
-              <span>Desktop Application</span>
-              <span class="project-tag pixel-font">QT</span>
+        <article class="experience-showcase interactive" data-cursor="intern">
+          <div class="experience-showcase-media">
+            <img src="assets/internship-proof-v2.jpg" alt="实习阶段的真实开发提交流程截图" class="experience-media-image" onerror="this.onerror=null;this.src='assets/internship-proof-safe.svg';" />
+          </div>
+          <div class="experience-showcase-content">
+            <div class="experience-showcase-meta">
+              <span class="experience-showcase-tag mono">INTERNSHIP</span>
+              <span class="experience-showcase-date mono">2025.08 - 2025.11</span>
             </div>
-            <h3>Real Time Snake Engine</h3>
-            <p>基于 Qt 框架开发的高性能贪吃蛇游戏引擎，围绕经典玩法实现动态难度调节、状态持久化与稳定渲染流程，重点体现桌面程序架构设计与交互实现能力。</p>
-            <div class="project-points">
-              <div>技术栈：Qt 框架、C++11、信号与槽机制、动态链表、随机数算法。</div>
-              <div>通过双缓冲渲染实现 60FPS 流畅动画，采用事件驱动架构响应键盘输入。</div>
-              <div>支持动态难度调节、重新开始/退出选择、游戏状态持久化与资源自动释放。</div>
+            <h3 class="experience-showcase-title">电子软件实习生<br /><em>吉利汽车研究院（宁波）有限公司</em></h3>
+            <p class="experience-showcase-desc">在实习阶段，我参与车内氛围灯动态流效方案的功能开发与产品落地，把提升用户体验和品牌认知度的需求转化为可实现、可测试、可交付的方案。</p>
+            <div class="project-proof-grid experience-proof-grid">
+              <div><span class="mono">SCENE</span><strong>车内氛围灯动态流效与发布会演示支持</strong></div>
+              <div><span class="mono">COLLAB</span><strong>协同产品、设计、硬件推进方案评审与落地</strong></div>
+              <div><span class="mono">RESULT</span><strong>形成可开发、可测试、可交付的功能闭环</strong></div>
             </div>
-            <div class="action-row" style="margin-top:16px;">
-              <a class="btn interactive" href="https://github.com/eliwang71-create/personal-projects" target="_blank" rel="noreferrer" data-cursor="github">查看 GitHub 项目</a>
-            </div>
-          </article>
+            <ul class="experience-showcase-list">
+              <li>参与车内氛围灯动态流效方案的功能开发，运用 C++ 实现核心逻辑，并支持车型发布会中的产品演示需求。</li>
+              <li>独立编写 Python 自动化测试脚本，参与 C++ 单元测试与每日回归测试体系建设，提升测试效率与交付质量。</li>
+              <li>与产品、设计、硬件团队协作，跟踪参与产品方案的技术评审，从开发周期、风险与成本角度推动方案落地。</li>
+            </ul>
+            <span class="experience-showcase-link mono">PRACTICE NOTES</span>
+          </div>
+        </article>
 
-          <article class="card tilt-card reveal span-5 interactive" data-cursor="project">
-            <div class="project-meta">
-              <span>System Programming</span>
-              <span class="project-tag pixel-font">C++</span>
-            </div>
-            <h3>High Concurrency Memory Pool</h3>
-            <p>面向多线程高并发场景设计并实现的内存池系统，采用三级缓存架构优化内存分配效率，重点解决传统 malloc/free 在高并发下的锁竞争与碎片问题。</p>
-            <div class="project-points">
-              <div>技术栈：C++、VS2022、多线程同步、池化技术、哈希映射、页内存管理。</div>
-              <div>线程独享无锁缓存结合 TLS 自由链表，降低小块内存分配过程中的锁竞争。</div>
-              <div>中央缓存分配器与页级存储管理器配合，提升分配效率并减少外部碎片。</div>
-            </div>
-            <div class="action-row" style="margin-top:16px;">
-              <a class="btn interactive" href="https://github.com/eliwang71-create/personal-projects" target="_blank" rel="noreferrer" data-cursor="github">查看 GitHub 项目</a>
-            </div>
+        <div class="experience-grid experience-grid-secondary reveal">
+          <article class="experience-card interactive" data-cursor="growth">
+            <svg viewBox="0 0 24 24"><use href="#icon-briefcase"></use></svg>
+            <p class="section-kicker mono">PRACTICE / 成长轨迹</p>
+            <h3>成长轨迹</h3>
+            <ul class="timeline-list">
+              <li><span class="mono">2023</span><p>从 C / C++、数据结构、Linux 和 Qt 开始打基础，逐步建立起底层实现和桌面开发能力。</p></li>
+              <li><span class="mono">2024</span><p>在个人项目和测试实践中补足方法意识，开始更重视流程拆解、验证逻辑和质量闭环。</p></li>
+              <li><span class="mono">2025.08</span><p>进入吉利汽车研究院实习后，开始在真实业务里理解需求、开发、测试和交付之间的关系。</p></li>
+              <li><span class="mono">2026</span><p>当前求职主方向明确为技术产品，也继续保留工程实现和测试能力的复合优势。</p></li>
+            </ul>
           </article>
-
-          <article class="terminal reveal span-7 interactive" id="terminal-zone" data-cursor="terminal">
-            <div class="terminal-scan"></div>
-            <div class="terminal-head">
-              <div class="terminal-dots"><span></span><span></span><span></span></div>
-              <span>interactive_terminal.exe</span>
+          <article class="experience-card interactive" data-cursor="target">
+            <svg viewBox="0 0 24 24"><use href="#icon-mail"></use></svg>
+            <p class="section-kicker mono">TARGET / 求职方向</p>
+            <h3>求职方向</h3>
+            <p>目前求职以技术产品为优先，希望继续发挥工程实现、测试意识和沟通推进上的复合优势。</p>
+            <div class="narrative-tags mono">
+              <span>TECH PRODUCT</span>
+              <span>ENGINEERING</span>
+              <span>QUALITY</span>
             </div>
-            <div class="hero-tags" style="margin-bottom:14px;">
-              <button class="terminal-chip interactive pixel-font" type="button" data-command="whoami" data-cursor="whoami">whoami</button>
-              <button class="terminal-chip interactive pixel-font" type="button" data-command="skills" data-cursor="skills">skills</button>
-              <button class="terminal-chip interactive pixel-font" type="button" data-command="product" data-cursor="product">product</button>
-              <button class="terminal-chip interactive pixel-font" type="button" data-command="experience" data-cursor="experience">experience</button>
-              <button class="terminal-chip interactive pixel-font" type="button" data-command="quality" data-cursor="quality">quality</button>
-              <button class="terminal-chip interactive pixel-font" type="button" data-command="projects" data-cursor="projects">projects</button>
-              <button class="terminal-chip interactive pixel-font" type="button" data-command="goals" data-cursor="goals">goals</button>
-            </div>
-            <div class="terminal-body" id="terminalBody">
-              <div class="terminal-line"><span class="terminal-prompt">&gt;</span><span>click one command to explore my profile and projects.</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="bento-grid">
-          <article class="card tilt-card reveal span-6 interactive" data-cursor="timeline">
-            <h2 class="section-title">成长路径与工作方式</h2>
-            <p>这部分用于说明我如何从基础学习逐步走向项目实践、测试意识和真实业务协作，也解释了我为什么会形成现在“技术实现 + 测试能力 + 产品理解”的求职定位。</p>
-            <div class="timeline">
-              <div class="timeline-item"><strong>2023 / 基础能力建立</strong><span>系统学习 C/C++、数据结构、Linux 与 Qt，为后续项目开发和系统实现打下扎实基础。</span></div>
-              <div class="timeline-item"><strong>2024 / 项目与测试能力增强</strong><span>在个人项目开发中不断暴露问题，也逐步意识到严格的逻辑、接口验证和测试方法对项目质量的重要性。</span></div>
-              <div class="timeline-item"><strong>2025.08 - 2025.11 / 实习实践</strong><span>在真实业务场景中参与开发、测试和协作推进，进一步理解需求落地、跨部门沟通和交付结果之间的关系。</span></div>
-              <div class="timeline-item"><strong>2026 / 求职定位明确</strong><span>逐步形成“技术实现 + 测试能力 + 产品理解”的综合型方向，希望在真实团队中承担更完整的交付角色。</span></div>
-            </div>
-            <div class="project-points" style="margin-top:18px;">
-              <div><strong>先明确需求，再推进实现</strong><span>我习惯先把目标、使用场景和流程理清楚，画出流程图后再进入代码开发，这能让我在实现前先建立清晰的逻辑结构。</span></div>
-              <div><strong>问题出现后及时沟通</strong><span>这是我在实习中强化出来的工作方式。遇到问题时，我会尽快和同事、领导沟通，避免把问题拖成更大的风险。</span></div>
-              <div><strong>重视逻辑与测试闭环</strong><span>个人项目开发中我经常遇到各种问题，也正因此更明确：严谨的逻辑、必要的测试和结果验证，是把项目做扎实的关键。</span></div>
-              <div><strong>产品兴趣在落地中被强化</strong><span>我一直对产品方向感兴趣，而实习中“写的东西真正被落地、不断跨部门沟通、最终看到成果”这件事，让我更坚定地想往复合型方向继续前进。</span></div>
-            </div>
-          </article>
-
-          <article class="card tilt-card reveal span-6 interactive" data-cursor="contact">
-            <h2 class="section-title">联系我</h2>
-            <p>如果我的项目经历和能力方向与你的岗位需求匹配，欢迎通过邮箱或 GitHub 与我联系。我也可以继续补充简历下载、项目详情页与更完整的技术说明。</p>
-            <div class="contact-list">
-              <div class="contact-item"><strong>姓名</strong><span>王一轩</span></div>
-              <div class="contact-item"><strong>目标方向</strong><span>技术产品优先 / 可关注技术实现相关岗位</span></div>
-              <div class="contact-item"><strong>学校</strong><span>西安财经大学</span></div>
-              <div class="contact-item"><strong>毕业时间</strong><span>2026.07</span></div>
-              <div class="contact-item"><strong>所在地</strong><span>中国</span></div>
-              <div class="contact-item"><strong>电话</strong><span>189-9237-9179</span></div>
-              <div class="contact-item"><strong>Email</strong><span>wangyx030212@163.com</span></div>
-              <div class="contact-item"><strong>GitHub</strong><span>github.com/eliwang71-create</span></div>
-            </div>
-            <div class="action-row" style="margin-top:16px;">
-              <a class="btn btn-primary interactive" href="mailto:wangyx030212@163.com" data-cursor="mail">发送邮件</a>
-              <a class="btn interactive" href="./王一轩-测试.pdf" target="_blank" rel="noreferrer" data-cursor="resume">测试简历</a>
-              <a class="btn interactive" href="./王一轩-产品.pdf" target="_blank" rel="noreferrer" data-cursor="resume">产品简历</a>
-              <a class="btn interactive" href="https://github.com/eliwang71-create" target="_blank" rel="noreferrer" data-cursor="github">查看 GitHub</a>
-            </div>
+            <ul class="detail-list detail-list-compact">
+              <li><strong>优先方向：</strong>技术产品相关岗位。</li>
+              <li><strong>能力支撑：</strong>兼顾工程实现、测试闭环与跨团队协作。</li>
+              <li><strong>期待场景：</strong>能够参与需求判断、方案推进和产品落地的团队。</li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-box reveal interactive" data-cursor="footer">
-        <div>
-          <strong style="display:block; font-size:18px; margin-bottom:8px; letter-spacing:-0.03em;">WANG YIXUAN / ENGINEER, QA & PRODUCT PORTFOLIO</strong>
-          <p>本网站围绕技术实现、实习实践、测试能力和产品理解四条线组织内容，重点呈现代表项目、专业技能、质量保障思路和真实协作经验。</p>
+  <footer class="site-footer" id="contact">
+    <div class="shell footer-shell reveal">
+      <h2 class="footer-title">GET IN <span>TOUCH.</span></h2>
+      <a href="mailto:wangyx030212@163.com" class="footer-mail mono interactive" data-cursor="mail">WANGYX030212@163.COM</a>
+      <div class="contact-summary">
+        <article><span class="mono">TARGET ROLE</span><strong>技术产品优先</strong></article>
+        <article><span class="mono">SCHOOL</span><strong>西安财经大学 · 2026届</strong></article>
+        <article><span class="mono">CITY</span><strong>期望城市可沟通</strong></article>
+        <article><span class="mono">STATUS</span><strong>开放校招与全职机会</strong></article>
+      </div>
+      <div class="footer-meta">
+        <div class="footer-copy mono">© 2026 YIXUAN PORTFOLIO • ALL RIGHTS RESERVED</div>
+        <div class="footer-links mono">
+          <a href="https://github.com/eliwang71-create" target="_blank" rel="noreferrer" class="interactive" data-cursor="github">GITHUB</a>
+          <a href="./王一轩-产品.pdf" target="_blank" rel="noreferrer" class="interactive" data-cursor="resume">VIEW PRODUCT CV</a>
+          <a href="./王一轩-测试.pdf" target="_blank" rel="noreferrer" class="interactive" data-cursor="resume">VIEW QA CV</a>
         </div>
-        <div class="tag-row">
-          <span class="tag interactive">Project Focus</span>
-          <span class="tag interactive">Engineering</span>
-          <span class="tag interactive">Delivery</span>
+        <div class="footer-time mono">
+          <span>LOCAL TIME</span>
+          <strong id="localTime">--:--:--</strong>
         </div>
       </div>
     </div>
@@ -457,4 +378,3 @@
   <script src="scripts/main.js"></script>
 </body>
 </html>
-   

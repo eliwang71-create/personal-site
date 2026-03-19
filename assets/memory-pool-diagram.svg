@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" fill="none">
+  <rect width="1200" height="760" rx="40" fill="#151515"/>
+  <rect x="58" y="58" width="1084" height="644" rx="28" fill="#111111" stroke="rgba(255,255,255,0.06)"/>
+  <text x="112" y="150" fill="#8a9098" font-family="JetBrains Mono, monospace" font-size="24" letter-spacing="6">ARCHITECTURE</text>
+  <text x="112" y="224" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="60" font-weight="800" font-style="italic">Memory Pool</text>
+  <rect x="112" y="292" width="286" height="122" rx="22" fill="#1c1c1c" stroke="#2b2b2b"/>
+  <rect x="458" y="292" width="286" height="122" rx="22" fill="#1c1c1c" stroke="#2b2b2b"/>
+  <rect x="804" y="292" width="286" height="122" rx="22" fill="#1c1c1c" stroke="#2b2b2b"/>
+  <text x="255" y="344" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Thread Cache</text>
+  <text x="255" y="383" text-anchor="middle" fill="#9aa0a8" font-family="JetBrains Mono, monospace" font-size="18">FAST LOCAL ALLOC</text>
+  <text x="601" y="344" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Central Cache</text>
+  <text x="601" y="383" text-anchor="middle" fill="#9aa0a8" font-family="JetBrains Mono, monospace" font-size="18">SHARED FREE LIST</text>
+  <text x="947" y="344" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Page Cache</text>
+  <text x="947" y="383" text-anchor="middle" fill="#9aa0a8" font-family="JetBrains Mono, monospace" font-size="18">SPAN MANAGEMENT</text>
+  <path d="M398 353H458" stroke="#00ff41" stroke-width="6" stroke-linecap="round"/>
+  <path d="M744 353H804" stroke="#00ff41" stroke-width="6" stroke-linecap="round"/>
+  <path d="M428 353l-14 -14M428 353l-14 14" stroke="#00ff41" stroke-width="6" stroke-linecap="round"/>
+  <path d="M774 353l-14 -14M774 353l-14 14" stroke="#00ff41" stroke-width="6" stroke-linecap="round"/>
+  <rect x="112" y="486" width="978" height="152" rx="24" fill="#181818"/>
+  <text x="156" y="546" fill="#9aa0a8" font-family="JetBrains Mono, monospace" font-size="22" letter-spacing="6">RESULT</text>
+  <text x="156" y="594" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">35% better allocation efficiency</text>
+  <text x="156" y="632" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">in small-block scenarios</text>
+  <text x="156" y="672" fill="#b0b4bc" font-family="Inter, Arial, sans-serif" font-size="22">Reduced lock contention, lower fragmentation, and better concurrent stability</text>
+</svg>
